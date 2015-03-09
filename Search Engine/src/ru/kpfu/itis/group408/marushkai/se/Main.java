@@ -34,7 +34,7 @@ public class Main {
                 }
             } else {
                 try {
-                    System.out.println(searcher.getFiles(cr.startAt, cr.mask).toString());
+                    System.out.println(searcher.getFiles(cr.startAt, cr.mask, cr.depth).toString());
                 } catch (Exception e){
                     System.out.println(e);
                 }
