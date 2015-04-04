@@ -1,0 +1,30 @@
+some ugly code
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
+import java.util.zip.ZipOutputStream;
+
+/**
+ * Created by unlim_000 on 04.04.2015.
+ */
+public class Archiver {
+    try (ZipInputStream zis = new ZipInputStream(new FileInputStream("smth1.zip"))){
+        ZipEntry ze;
+        while ((ze = zis.getNextEntry()) != null){
+            System.out.println(ze.getName());
+            try (DataOutputStream dos = new DataOutputStream(new FileOutputStream(ze.getName()))){
+                while (zis.available() != 0) {
+                    dos.write(zis.read());
+                }
+
+            } catch (IOException e){
+                e.printStackTrace();
+            }
+        }
+    } catch (Exception f){
+        f.printStackTrace();
+    }
+
+
+    try (ZipOutputStream zos = new ZipOutputStream(new FileOutputStream("extracted.zip"))) {
+        File file = new File("C:/Programming/Projects/2-й семестр/stream/files");
+        String[] files = file.list();

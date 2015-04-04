@@ -1,0 +1,19 @@
+  try (ZipOutputStream zos = new ZipOutputStream(new FileOutputStream("extracted.zip"))) {
+        File file = new File("C:/Programming/Projects/2-й семестр/stream/files");
+        String[] files = file.list();
+        for (int i = 0; i < files.length; i++) {
+            file = new File(files[i]);
+            try (FileInputStream fis = new FileInputStream(file)) {
+                ZipEntry ze = new ZipEntry(files[i]);
+                ze.
+                        zos.putNextEntry(new ZipEntry(files[i]));
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    } catch (Exception e){
+        e.printStackTrace();
+    }
+}
